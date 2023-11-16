@@ -13,6 +13,18 @@ namespace ZKI_Lab1
 {
     public partial class Form4 : Form
     {
+        public int Key { get; set; }
+        public string Fraza { get; set; }
+        public string EncryptFraza { get; set; }
+
+        public string Letters = "abcdefghijklmnopqrstuvwxyz";
+        List<string> CryptSystem = new();
+        public string MessageForEncrypt { get; set; }
+        public string MessageForDencrypt { get; set; }
+        public string EncryptMessage { get; set; }
+
+        public string CryptoSystemMessage { get; set; }
+
         Lab4 lab4 = new Lab4();
         string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -21,26 +33,70 @@ namespace ZKI_Lab1
             InitializeComponent();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
-            lab4.CaesarKey = int.Parse(textBox1.Text);
+            if (textBox1.Text == string.Empty) return;
+            Key = int.Parse(textBox1.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            lab4.CaesarPhrase = textBox2.Text;
-            lab4.CaesarEncryptedPhrase = lab4.Encipher(lab4.CaesarPhrase, lab4.CaesarKey);
-            label6.Text = lab4.CaesarEncryptedPhrase;
+            if (textBox2.Text == string.Empty) return;
+            Fraza = textBox2.Text;
+            SetCryptoSystem(EncryptCezar());
+        }
 
+        public void SetCryptoSystem(string frazaCezar)
+        {
             StringBuilder cryptoSystemMessage = new StringBuilder();
-            for (int i = 0; i < lab4.CaesarEncryptedPhrase.Length; i++)
+            StringBuilder Rows = new StringBuilder();
+            for (int i = 0; i < frazaCezar.Length; i++)
             {
-                cryptoSystemMessage.Append(lab4.CaesarEncryptedPhrase[i]);
+                cryptoSystemMessage.Append(frazaCezar[i]);
+                Rows.Append(frazaCezar[i]);
+                Rows.Append("\n");
             }
-            for (int i = 0; i < alphabet.Length; i++)
+
+            for (int i = 0; i < Letters.Length; i++)
             {
-                if (lab4.CaesarEncryptedPhrase.IndexOf(alphabet[i]) != -1) continue;
+                if (frazaCezar.IndexOf(Letters[i]) != -1) continue;
+                cryptoSystemMessage.Append(Letters[i]);
+                Rows.Append(Letters[i]);
+                Rows.Append("\n");
             }
+
+            txtColumns.Text = cryptoSystemMessage.ToString();
+            txtRows.Text = Rows.ToString();
+
+            CryptoSystemMessage = cryptoSystemMessage.ToString();
+            for (int i = 0; i < 26; i++)
+            {
+                CryptSystem.Add(cryptoSystemMessage.ToString());
+                txtCryptoSchem.Text += cryptoSystemMessage.ToString() + "\n";
+                cryptoSystemMessage.Append(cryptoSystemMessage[0]);
+                cryptoSystemMessage.Remove(0, 1);
+            }
+        }
+
+        public string EncryptCezar()
+        {
+            StringBuilder encryptMessage = new StringBuilder();
+            for (int i = 0; i < Fraza.Length; i++)
+            {
+                for (int j = 0; j < Letters.Length; j++)
+                {
+                    int index = j + Key;
+
+                    if (index > Letters.Length)
+                        index -= Letters.Length;
+
+                    if (Fraza[i] == Letters[j])
+                        encryptMessage.Append(Letters[index]);
+                }
+            }
+            EncryptFraza = encryptMessage.ToString();
+            return encryptMessage.ToString();
         }
     }
 }

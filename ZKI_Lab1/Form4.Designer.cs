@@ -45,6 +45,8 @@
             label5 = new Label();
             textBox5 = new TextBox();
             label6 = new Label();
+            textBox6 = new TextBox();
+            textBox7 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -109,7 +111,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(12, 146);
+            label3.Location = new Point(185, 189);
             label3.Name = "label3";
             label3.Size = new Size(276, 30);
             label3.TabIndex = 6;
@@ -119,7 +121,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(511, 146);
+            label4.Location = new Point(645, 180);
             label4.Name = "label4";
             label4.Size = new Size(541, 30);
             label4.TabIndex = 7;
@@ -128,7 +130,7 @@
             // textBox3
             // 
             textBox3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(511, 179);
+            textBox3.Location = new Point(645, 213);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(387, 263);
@@ -137,7 +139,7 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(904, 244);
+            button3.Location = new Point(1038, 278);
             button3.Name = "button3";
             button3.Size = new Size(148, 40);
             button3.TabIndex = 9;
@@ -147,7 +149,7 @@
             // button4
             // 
             button4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.Location = new Point(904, 313);
+            button4.Location = new Point(1038, 347);
             button4.Name = "button4";
             button4.Size = new Size(148, 40);
             button4.TabIndex = 10;
@@ -157,7 +159,7 @@
             // textBox4
             // 
             textBox4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(511, 491);
+            textBox4.Location = new Point(645, 525);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(387, 178);
@@ -166,7 +168,7 @@
             // button5
             // 
             button5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.Location = new Point(904, 510);
+            button5.Location = new Point(1038, 544);
             button5.Name = "button5";
             button5.Size = new Size(148, 40);
             button5.TabIndex = 12;
@@ -176,7 +178,7 @@
             // button6
             // 
             button6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.Location = new Point(904, 588);
+            button6.Location = new Point(1038, 622);
             button6.Name = "button6";
             button6.Size = new Size(148, 40);
             button6.TabIndex = 13;
@@ -187,7 +189,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(510, 458);
+            label5.Location = new Point(644, 492);
             label5.Name = "label5";
             label5.Size = new Size(533, 30);
             label5.TabIndex = 14;
@@ -196,10 +198,10 @@
             // textBox5
             // 
             textBox5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.Location = new Point(12, 189);
+            textBox5.Location = new Point(105, 280);
             textBox5.Multiline = true;
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(480, 453);
+            textBox5.Size = new Size(487, 513);
             textBox5.TabIndex = 15;
             // 
             // label6
@@ -212,11 +214,31 @@
             label6.TabIndex = 16;
             label6.Text = "tmp";
             // 
+            // textBox6
+            // 
+            textBox6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox6.Location = new Point(105, 222);
+            textBox6.Multiline = true;
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(487, 52);
+            textBox6.TabIndex = 17;
+            // 
+            // textBox7
+            // 
+            textBox7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox7.Location = new Point(40, 278);
+            textBox7.Multiline = true;
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(59, 515);
+            textBox7.TabIndex = 18;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1064, 681);
+            ClientSize = new Size(1204, 805);
+            Controls.Add(textBox7);
+            Controls.Add(textBox6);
             Controls.Add(label6);
             Controls.Add(textBox5);
             Controls.Add(label5);
@@ -259,5 +281,7 @@
         private Label label5;
         private TextBox textBox5;
         private Label label6;
+        private TextBox textBox6;
+        private TextBox textBox7;
     }
 }

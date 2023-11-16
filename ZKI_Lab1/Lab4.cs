@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZKI_Lab1
 {
-    internal class Lab4
+    internal class Lab4 : Form
     {
 
         public int CaesarKey { get; set; }
