@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZKI_Lab3", "ZKI_Labs\ZKI_Lab3.csproj", "{6F20AEEC-722C-4875-9059-EF2EDC8C5FDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZKI_Lab2", "ZKI_Lab2\ZKI_Lab2.csproj", "{B938B684-1D1A-4184-916F-1FACF2838B57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZKI_Lab1", "ZKI_Lab1\ZKI_Lab1.csproj", "{4EB1A434-1862-43BD-A22B-95F939E1526D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F20AEEC-722C-4875-9059-EF2EDC8C5FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F20AEEC-722C-4875-9059-EF2EDC8C5FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F20AEEC-722C-4875-9059-EF2EDC8C5FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F20AEEC-722C-4875-9059-EF2EDC8C5FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B938B684-1D1A-4184-916F-1FACF2838B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B938B684-1D1A-4184-916F-1FACF2838B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B938B684-1D1A-4184-916F-1FACF2838B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B938B684-1D1A-4184-916F-1FACF2838B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB1A434-1862-43BD-A22B-95F939E1526D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB1A434-1862-43BD-A22B-95F939E1526D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB1A434-1862-43BD-A22B-95F939E1526D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB1A434-1862-43BD-A22B-95F939E1526D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D4257A6-A904-45D9-9518-9E32F6F61E19}
+	EndGlobalSection
+EndGlobal
