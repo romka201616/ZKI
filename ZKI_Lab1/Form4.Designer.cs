@@ -145,6 +145,7 @@
             button3.TabIndex = 9;
             button3.Text = "Зашифровать";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -155,6 +156,7 @@
             button4.TabIndex = 10;
             button4.Text = "Дешифровать";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // textBox4
             // 
@@ -174,6 +176,7 @@
             button5.TabIndex = 12;
             button5.Text = "Сохранить";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
@@ -184,6 +187,7 @@
             button6.TabIndex = 13;
             button6.Text = "Загрузить";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // label5
             // 
@@ -201,7 +205,7 @@
             textBox5.Location = new Point(105, 280);
             textBox5.Multiline = true;
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(487, 513);
+            textBox5.Size = new Size(487, 698);
             textBox5.TabIndex = 15;
             // 
             // label6
@@ -210,9 +214,9 @@
             label6.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label6.Location = new Point(846, 50);
             label6.Name = "label6";
-            label6.Size = new Size(52, 30);
+            label6.Size = new Size(47, 30);
             label6.TabIndex = 16;
-            label6.Text = "tmp";
+            label6.Text = "key";
             // 
             // textBox6
             // 
@@ -226,17 +230,17 @@
             // textBox7
             // 
             textBox7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox7.Location = new Point(40, 278);
+            textBox7.Location = new Point(76, 278);
             textBox7.Multiline = true;
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(59, 515);
+            textBox7.Size = new Size(23, 700);
             textBox7.TabIndex = 18;
             // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1204, 805);
+            ClientSize = new Size(1211, 1050);
             Controls.Add(textBox7);
             Controls.Add(textBox6);
             Controls.Add(label6);

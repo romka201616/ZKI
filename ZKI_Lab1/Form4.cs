@@ -13,20 +13,15 @@ namespace ZKI_Lab1
 {
     public partial class Form4 : Form
     {
-        public int Key { get; set; }
-        public string Fraza { get; set; }
-        public string EncryptFraza { get; set; }
-
-        public string Letters = "abcdefghijklmnopqrstuvwxyz";
+        public int CezarKey { get; set; }
+        public string CezarPhraze { get; set; } = String.Empty;
+        public string CezarEncryptedPhraze { get; set; } = String.Empty;
+        public string Alphabet = "abcdefghijklmnopqrstuvwxyz";
         List<string> CryptSystem = new();
-        public string MessageForEncrypt { get; set; }
-        public string MessageForDencrypt { get; set; }
-        public string EncryptMessage { get; set; }
-
-        public string CryptoSystemMessage { get; set; }
-
-        Lab4 lab4 = new Lab4();
-        string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public string MessageForEncrypt { get; set; } = String.Empty;
+        public string MessageForDecrypt { get; set; } = String.Empty;
+        public string EncryptedMessage { get; set; } = String.Empty;
+        public string CryptoSystemMessage { get; set; } = String.Empty;
 
         public Form4()
         {
@@ -37,43 +32,43 @@ namespace ZKI_Lab1
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == string.Empty) return;
-            Key = int.Parse(textBox1.Text);
+            CezarKey = int.Parse(textBox1.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (textBox2.Text == string.Empty) return;
-            Fraza = textBox2.Text;
+            CezarPhraze = textBox2.Text;
             SetCryptoSystem(EncryptCezar());
         }
 
-        public void SetCryptoSystem(string frazaCezar)
+        public void SetCryptoSystem(string phrazeCezar)
         {
             StringBuilder cryptoSystemMessage = new StringBuilder();
             StringBuilder Rows = new StringBuilder();
-            for (int i = 0; i < frazaCezar.Length; i++)
+            for (int i = 0; i < phrazeCezar.Length; i++)
             {
-                cryptoSystemMessage.Append(frazaCezar[i]);
-                Rows.Append(frazaCezar[i]);
+                cryptoSystemMessage.Append(phrazeCezar[i]);
+                Rows.Append(phrazeCezar[i]);
                 Rows.Append("\n");
             }
 
-            for (int i = 0; i < Letters.Length; i++)
+            for (int i = 0; i < Alphabet.Length; i++)
             {
-                if (frazaCezar.IndexOf(Letters[i]) != -1) continue;
-                cryptoSystemMessage.Append(Letters[i]);
-                Rows.Append(Letters[i]);
+                if (phrazeCezar.IndexOf(Alphabet[i]) != -1) continue;
+                cryptoSystemMessage.Append(Alphabet[i]);
+                Rows.Append(Alphabet[i]);
                 Rows.Append("\n");
             }
 
-            txtColumns.Text = cryptoSystemMessage.ToString();
-            txtRows.Text = Rows.ToString();
+            textBox6.Text = cryptoSystemMessage.ToString();
+            textBox7.Text = Rows.ToString();
 
             CryptoSystemMessage = cryptoSystemMessage.ToString();
             for (int i = 0; i < 26; i++)
             {
                 CryptSystem.Add(cryptoSystemMessage.ToString());
-                txtCryptoSchem.Text += cryptoSystemMessage.ToString() + "\n";
+                textBox5.Text += cryptoSystemMessage.ToString() + "\n";
                 cryptoSystemMessage.Append(cryptoSystemMessage[0]);
                 cryptoSystemMessage.Remove(0, 1);
             }
@@ -82,21 +77,116 @@ namespace ZKI_Lab1
         public string EncryptCezar()
         {
             StringBuilder encryptMessage = new StringBuilder();
-            for (int i = 0; i < Fraza.Length; i++)
+            for (int i = 0; i < CezarPhraze.Length; i++)
             {
-                for (int j = 0; j < Letters.Length; j++)
+                for (int j = 0; j < Alphabet.Length; j++)
                 {
-                    int index = j + Key;
+                    int index = j + CezarKey;
 
-                    if (index > Letters.Length)
-                        index -= Letters.Length;
+                    if (index > Alphabet.Length)
+                        index -= Alphabet.Length;
 
-                    if (Fraza[i] == Letters[j])
-                        encryptMessage.Append(Letters[index]);
+                    if (CezarPhraze[i] == Alphabet[j])
+                        encryptMessage.Append(Alphabet[index]);
                 }
             }
-            EncryptFraza = encryptMessage.ToString();
+            CezarEncryptedPhraze = encryptMessage.ToString();
             return encryptMessage.ToString();
+        }
+
+        public string EncryptVijer(string message)
+        {
+            string newKey = "";
+            while (newKey.Length < MessageForEncrypt.Length)
+            {
+                newKey += CezarEncryptedPhraze;
+            }
+            label6.Text = newKey;
+            StringBuilder encryptVijer = new StringBuilder();
+            for (int i = 0; i < message.Length; i++)
+            {
+                int rowIndex = CryptoSystemMessage.IndexOf(message[i]);
+                int colIndex = CryptoSystemMessage.IndexOf(newKey[i]);
+                encryptVijer.Append(CryptSystem[rowIndex][colIndex]);
+            }
+            return encryptVijer.ToString();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageForEncrypt = textBox3.Text;
+            string encryptMessage = EncryptVijer(MessageForEncrypt);
+            textBox4.Text = encryptMessage;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageForDecrypt = textBox3.Text;
+            string dencryptMessage = DencryptVijer(MessageForDecrypt);
+            textBox4.Text = dencryptMessage;
+        }
+
+        private string DencryptVijer(string messageForDencrypt)
+        {
+            string newKey = "";
+            while (newKey.Length < MessageForDecrypt.Length)
+            {
+                newKey += CezarEncryptedPhraze;
+            }
+            label6.Text = newKey;
+            StringBuilder dencryptVijer = new StringBuilder();
+            for (int i = 0; i < messageForDencrypt.Length; i++)
+            {
+                int colIndex = CryptoSystemMessage.IndexOf(newKey[i]);
+                for (int j = 0; j < CryptSystem.Count; j++)
+                {
+                    if (messageForDencrypt[i] == CryptSystem[j][colIndex])
+                    {
+                        dencryptVijer.Append(CryptoSystemMessage[j]);
+                        break;
+                    }
+                }
+            }
+            return dencryptVijer.ToString();
+        }
+
+        private string ReadFile()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            openFileDialog.Title = "Выберите файл";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                string fileContent = File.ReadAllText(filePath);
+                return fileContent;
+            }
+
+            return string.Empty;
+        }
+
+        private void SaveToFile(string text)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            saveFileDialog.Title = "Сохранить файл";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                File.WriteAllText(filePath, text);
+                MessageBox.Show("Файл успешно сохранен.");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SaveToFile(textBox4.Text);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = ReadFile();
         }
     }
 }
