@@ -47,6 +47,8 @@
             label6 = new Label();
             textBox6 = new TextBox();
             textBox7 = new TextBox();
+            comboBox1 = new ComboBox();
+            button7 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -236,11 +238,32 @@
             textBox7.Size = new Size(23, 700);
             textBox7.TabIndex = 18;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(761, 744);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 20;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(761, 788);
+            button7.Name = "button7";
+            button7.Size = new Size(119, 45);
+            button7.TabIndex = 19;
+            button7.Text = "Перейти на форму";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1211, 1050);
+            Controls.Add(comboBox1);
+            Controls.Add(button7);
             Controls.Add(textBox7);
             Controls.Add(textBox6);
             Controls.Add(label6);
@@ -287,5 +310,7 @@
         private Label label6;
         private TextBox textBox6;
         private TextBox textBox7;
+        private ComboBox comboBox1;
+        private Button button7;
     }
 }

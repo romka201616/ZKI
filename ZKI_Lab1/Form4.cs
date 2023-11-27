@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using ZKI_Lab2;
+using ZKI_Labs;
 
 namespace ZKI_Lab1
 {
@@ -26,6 +28,9 @@ namespace ZKI_Lab1
         public Form4()
         {
             InitializeComponent();
+            comboBox1.Items.Add("Lab1");
+            comboBox1.Items.Add("Lab2");
+            comboBox1.Items.Add("Lab3");
         }
 
 
@@ -187,6 +192,34 @@ namespace ZKI_Lab1
         private void button6_Click(object sender, EventArgs e)
         {
             textBox3.Text = ReadFile();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedItem)
+            {
+                case "Lab1":
+                    Form1 form1 = new Form1();
+                    this.Hide();
+                    form1.Show();
+                    break;
+
+                case "Lab2":
+                    Form2 form2 = new Form2();
+                    this.Hide();
+                    form2.Show();
+                    break;
+                case "Lab3":
+                    Form3 form3 = new Form3();
+                    this.Hide();
+                    form3.Show();
+                    break;
+            }
         }
     }
 }

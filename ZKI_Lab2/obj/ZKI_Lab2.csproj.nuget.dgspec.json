@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Labs\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj": {}
+    "C:\\Users\\1216346\\source\\repos\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj": {}
   },
   "projects": {
-    "C:\\Labs\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj": {
+    "C:\\Users\\1216346\\source\\repos\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Labs\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj",
+        "projectUniqueName": "C:\\Users\\1216346\\source\\repos\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj",
         "projectName": "ZKI_Lab2",
-        "projectPath": "C:\\Labs\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj",
-        "packagesPath": "C:\\Users\\miron\\.nuget\\packages\\",
-        "outputPath": "C:\\Labs\\ZKI\\ZKI_Lab2\\obj\\",
+        "projectPath": "C:\\Users\\1216346\\source\\repos\\ZKI\\ZKI_Lab2\\ZKI_Lab2.csproj",
+        "packagesPath": "C:\\Users\\1216346\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\1216346\\source\\repos\\ZKI\\ZKI_Lab2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\miron\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "\\\\mcb.local\\RoamingProfiles$\\StudentsData\\1216346\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -63,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -16,6 +16,7 @@ namespace ZKI_Labs
             InitializeComponent();
             comboBox1.Items.Add("Lab1");
             comboBox1.Items.Add("Lab2");
+            comboBox1.Items.Add("Lab4");
             list = new List<string>() { "D", "E", "B", "U", "G", "I", "N", "A", "C", "F", "H", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             array = new string[6, 6];
             int count = 0;
@@ -111,6 +112,11 @@ namespace ZKI_Labs
                     Form2 form2 = new Form2();
                     this.Hide();
                     form2.Show();
+                    break;
+                case "Lab4":
+                    Form4 form4 = new Form4();
+                    this.Hide();
+                    form4.Show();
                     break;
             }
         }
