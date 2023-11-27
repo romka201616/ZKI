@@ -12,6 +12,7 @@ namespace ZKI_Lab2
             InitializeComponent();
             comboBox1.Items.Add("Lab1");
             comboBox1.Items.Add("Lab3");
+            comboBox1.Items.Add("Lab4");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -110,6 +111,12 @@ namespace ZKI_Lab2
                     Form3 form3 = new Form3();
                     this.Hide();
                     form3.Show();
+                    break;
+
+                case "Lab4":
+                    Form4 form4 = new Form4();
+                    this.Hide();
+                    form4.Show();
                     break;
             }
         }
