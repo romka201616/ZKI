@@ -31,6 +31,7 @@ namespace ZKI_Lab1
             comboBox1.Items.Add("Lab1");
             comboBox1.Items.Add("Lab2");
             comboBox1.Items.Add("Lab3");
+            comboBox1.Items.Add("Lab5");
         }
 
 
@@ -218,6 +219,11 @@ namespace ZKI_Lab1
                     Form3 form3 = new Form3();
                     this.Hide();
                     form3.Show();
+                    break;
+                case "Lab5":
+                    Form5 form5 = new Form5();
+                    this.Hide();
+                    form5.Show();
                     break;
             }
         }

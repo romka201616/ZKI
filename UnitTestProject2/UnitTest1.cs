@@ -18,6 +18,5 @@ namespace UnitTestProject2
             Assert.AreEqual(result, "bcdefgh");
         }
 
-
     }
 }
