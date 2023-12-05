@@ -11,7 +11,7 @@ namespace ZKI_Lab1
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form5());
+            Application.Run(new Form6());
         }
     }
 }

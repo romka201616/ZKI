@@ -119,9 +119,9 @@
             label5.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(584, 443);
             label5.Name = "label5";
-            label5.Size = new Size(533, 30);
+            label5.Size = new Size(534, 30);
             label5.TabIndex = 35;
-            label5.Text = "Зашифрованное сообщение по системе Виженера";
+            label5.Text = "Зашифрованное сообщение по системе Плейфера";
             // 
             // button6
             // 
@@ -191,9 +191,9 @@
             label4.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(585, 131);
             label4.Name = "label4";
-            label4.Size = new Size(541, 30);
+            label4.Size = new Size(539, 30);
             label4.TabIndex = 28;
-            label4.Text = "Сообщение для шифрования по системе Виженера";
+            label4.Text = "Сообщение для шифрования по системе плейфера";
             // 
             // label3
             // 
