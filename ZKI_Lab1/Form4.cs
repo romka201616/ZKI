@@ -15,6 +15,7 @@ namespace ZKI_Lab1
 {
     public partial class Form4 : Form
     {
+
         public int CezarKey { get; set; }
         public string CezarPhraze { get; set; } = String.Empty;
         public string CezarEncryptedPhraze { get; set; } = String.Empty;
@@ -226,6 +227,11 @@ namespace ZKI_Lab1
                     form5.Show();
                     break;
             }
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
