@@ -68,7 +68,7 @@ namespace ZKI_Lab1
             {
                 for (int j = 0; j < Alphabet.Length; j++)
                 {
-                    int index = j - CezarKey + 1;
+                    int index = j - CezarKey;
 
                     if (index < 0)
                         index += Alphabet.Length;
@@ -78,6 +78,7 @@ namespace ZKI_Lab1
                 }
             }
             Decrypted = decryptedMessage.ToString();
+            
             return decryptedMessage.ToString();
         }
 
