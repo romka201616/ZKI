@@ -8,3 +8,14 @@ C:\Users\1216346\source\repos\ZKI\Lab4_Net\obj\Debug\Lab4_Net.csproj.GenerateRes
 C:\Users\1216346\source\repos\ZKI\Lab4_Net\obj\Debug\Lab4_Net.csproj.CoreCompileInputs.cache
 C:\Users\1216346\source\repos\ZKI\Lab4_Net\obj\Debug\Lab4_Net.exe
 C:\Users\1216346\source\repos\ZKI\Lab4_Net\obj\Debug\Lab4_Net.pdb
+C:\Labs\ZKI\Lab4_Net\bin\Debug\Lab4_Net.exe.config
+C:\Labs\ZKI\Lab4_Net\bin\Debug\Lab4_Net.exe
+C:\Labs\ZKI\Lab4_Net\bin\Debug\Lab4_Net.pdb
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.csproj.AssemblyReference.cache
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.csproj.SuggestedBindingRedirects.cache
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.Form1.resources
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.Properties.Resources.resources
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.csproj.GenerateResource.cache
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.csproj.CoreCompileInputs.cache
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.exe
+C:\Labs\ZKI\Lab4_Net\obj\Debug\Lab4_Net.pdb

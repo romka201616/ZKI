@@ -78,7 +78,7 @@ namespace ZKI_Lab1
                 }
             }
             Decrypted = decryptedMessage.ToString();
-            
+
             return decryptedMessage.ToString();
         }
 
@@ -178,6 +178,11 @@ namespace ZKI_Lab1
             }
 
             textBox7.Text = DecryptCezar();
+
+        }
+
+        private void Form7_Load(object sender, EventArgs e)
+        {
 
         }
     }
