@@ -102,6 +102,35 @@ namespace ZKI_Lab1
             return a;
         }
 
+        private string ReadFile()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            openFileDialog.Title = "Выберите файл";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                string fileContent = File.ReadAllText(filePath);
+                return fileContent;
+            }
+
+            return string.Empty;
+        }
+
+        private void SaveToFile(string text)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            saveFileDialog.Title = "Сохранить файл";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                File.WriteAllText(filePath, text);
+                MessageBox.Show("Файл успешно сохранен.");
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Message = textBox1.Text;
@@ -138,11 +167,12 @@ namespace ZKI_Lab1
                 textBox8.Text += B[i] + " ";
             }
 
-
+            SaveToFile("");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            ReadFile();
             decrypted = "";
             //for (int i = 0; i < Message.Length; i++)
             //{
