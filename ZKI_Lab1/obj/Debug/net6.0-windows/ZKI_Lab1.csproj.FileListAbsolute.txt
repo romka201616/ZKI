@@ -60,3 +60,4 @@ C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form5.resources
 C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form6.resources
 C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form7.resources
 C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form8.resources
+C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form9.resources
