@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using System.Windows.Forms;
 
 namespace ZKI_Lab1
@@ -199,251 +200,307 @@ namespace ZKI_Lab1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string[] numberStrings = textBox1.Text.Split(' ');
-            var tmp = new List<int>();
-            bool ascendant = true;
-
-            foreach (string numberString in numberStrings)
+            try
             {
-                int number = int.Parse(numberString);
-                tmp.Add(number);
-            }
+                string[] numberStrings = textBox1.Text.Split(' ');
+                var tmp = new List<int>();
+                bool ascendant = true;
 
-            for (int i = 0; i < tmp.Count; i++)
-            {
-                int sum = 0;
-                for (int j = 0; j < i; j++)
+                foreach (string numberString in numberStrings)
                 {
-                    sum += tmp[j];
+                    int number = int.Parse(numberString);
+                    tmp.Add(number);
                 }
-                if (i > 0 && tmp[i] <= sum)
+
+                for (int i = 0; i < tmp.Count; i++)
                 {
-                    ascendant = false;
-                    break;
+                    int sum = 0;
+                    for (int j = 0; j < i; j++)
+                    {
+                        sum += tmp[j];
+                    }
+                    if (i > 0 && tmp[i] <= sum)
+                    {
+                        ascendant = false;
+                        break;
+                    }
                 }
+
+                if (tmp.Count == 8 && ascendant)
+                {
+                    Sequence = tmp;
+                    Message = textBox1.Text;
+                    textBox1.ForeColor = Color.Green;
+                }
+                else
+                {
+                    textBox1.ForeColor = Color.Red;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
             }
 
-            if (tmp.Count == 8 && ascendant)
-            {
-                Sequence = tmp;
-                Message = textBox1.Text;
-                textBox1.ForeColor = Color.Green;
-            }
-            else
-            {
-                textBox1.ForeColor = Color.Red;
-            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            int number = int.Parse(textBox1.Text);
-            Sequence.Add(number);
-            for (int i = 1; i < 8; i++)
+            try
             {
-                number *= 2;
+                int number = int.Parse(textBox1.Text);
                 Sequence.Add(number);
-                textBox1.Text += " " + number.ToString();
+                for (int i = 1; i < 8; i++)
+                {
+                    number *= 2;
+                    Sequence.Add(number);
+                    textBox1.Text += " " + number.ToString();
+                }
+                textBox1.ForeColor = Color.Green;
             }
-            textBox1.ForeColor = Color.Green;
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            string text = ReadFile();
-            string[] numberStrings = text.Split(' ');
-            var tmp = new List<int>();
-            bool ascendant = true;
-            textBox1.Clear();
-
-            foreach (string numberString in numberStrings)
+            try
             {
-                int number = int.Parse(numberString);
-                tmp.Add(number);
-                textBox1.Text += number + " ";
-            }
+                string text = ReadFile();
+                string[] numberStrings = text.Split(' ');
+                var tmp = new List<int>();
+                bool ascendant = true;
+                textBox1.Clear();
 
-            for (int i = 0; i < tmp.Count; i++)
-            {
-                int sum = 0;
-                for (int j = 0; j < i; j++)
+                foreach (string numberString in numberStrings)
                 {
-                    sum += tmp[j];
+                    int number = int.Parse(numberString);
+                    tmp.Add(number);
+                    textBox1.Text += number + " ";
                 }
-                if (i > 0 && tmp[i] <= sum)
+
+                for (int i = 0; i < tmp.Count; i++)
                 {
-                    ascendant = false;
-                    break;
+                    int sum = 0;
+                    for (int j = 0; j < i; j++)
+                    {
+                        sum += tmp[j];
+                    }
+                    if (i > 0 && tmp[i] <= sum)
+                    {
+                        ascendant = false;
+                        break;
+                    }
                 }
+
+                if (tmp.Count == 8 && ascendant)
+                {
+                    Sequence = tmp;
+                    textBox1.ForeColor = Color.Green;
+                }
+                else
+                {
+                    textBox1.ForeColor = Color.Red;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
             }
 
-            if (tmp.Count == 8 && ascendant)
-            {
-                Sequence = tmp;
-                textBox1.ForeColor = Color.Green;
-            }
-            else
-            {
-                textBox1.ForeColor = Color.Red;
-            }
         }
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            int tmp = int.Parse(textBox3.Text);
-            if (tmp > Sequence.Sum())
+            try
             {
-                textBox3.ForeColor = Color.Green;
-                M = tmp;
+                int tmp = int.Parse(textBox3.Text);
+                if (tmp > Sequence.Sum())
+                {
+                    textBox3.ForeColor = Color.Green;
+                    M = tmp;
 
+                }
+                else
+                {
+                    textBox3.ForeColor = Color.Red;
+                }
             }
-            else
+            catch
             {
-                textBox3.ForeColor = Color.Red;
+                MessageBox.Show("Ошибка");
             }
+
         }
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            M = Sequence.Sum() + 1;
-            textBox3.Text = M.ToString();
-            textBox3.ForeColor = Color.Green;
+            try
+            {
+                M = Sequence.Sum() + 1;
+                textBox3.Text = M.ToString();
+                textBox3.ForeColor = Color.Green;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+
         }
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            int tmp = int.Parse(ReadFile());
-            textBox3.Text = tmp.ToString();
-            if (tmp > Sequence.Sum())
+            try
             {
-                textBox3.ForeColor = Color.Green;
-                M = tmp;
+                int tmp = int.Parse(ReadFile());
+                textBox3.Text = tmp.ToString();
+                if (tmp > Sequence.Sum())
+                {
+                    textBox3.ForeColor = Color.Green;
+                    M = tmp;
 
+                }
+                else
+                {
+                    textBox3.ForeColor = Color.Red;
+                }
             }
-            else
+            catch
             {
-                textBox3.ForeColor = Color.Red;
+                MessageBox.Show("Ошибка");
             }
+
         }
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-            Message = textBox2.Text;
-
-            for (int i = 0; i < Message.Length; i++)
+            try
             {
-                richTextBox1.Text += Message[i];
-                richTextBox1.Text += Environment.NewLine;
-                richTextBox2.Text += letterCodes[Message[i]];
-                richTextBox2.Text += Environment.NewLine;
-                WeightsSums.Add(new List<int>());
+                Message = textBox2.Text;
+
+                for (int i = 0; i < Message.Length; i++)
+                {
+                    richTextBox1.Text += Message[i];
+                    richTextBox1.Text += Environment.NewLine;
+                    richTextBox2.Text += letterCodes[Message[i]];
+                    richTextBox2.Text += Environment.NewLine;
+                    WeightsSums.Add(new List<int>());
+                }
+
+                for (int i = 0; i < Message.Length; i++)
+                {
+                    if (letterCodes[Message[i]][0] == '1')
+                    {
+                        richTextBox3.Text += OpenSequence[0].ToString();
+                        richTextBox3.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[0]);
+                    }
+                    else
+                    {
+                        richTextBox3.Text += "-";
+                        richTextBox3.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][1] == '1')
+                    {
+                        richTextBox4.Text += OpenSequence[1].ToString();
+                        richTextBox4.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[1]);
+                    }
+                    else
+                    {
+                        richTextBox4.Text += "-";
+                        richTextBox4.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][2] == '1')
+                    {
+                        richTextBox5.Text += OpenSequence[2].ToString();
+                        richTextBox5.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[2]);
+                    }
+                    else
+                    {
+                        richTextBox5.Text += "-";
+                        richTextBox5.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][3] == '1')
+                    {
+                        richTextBox6.Text += OpenSequence[3].ToString();
+                        richTextBox6.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[3]);
+                    }
+                    else
+                    {
+                        richTextBox6.Text += "-";
+                        richTextBox6.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][4] == '1')
+                    {
+                        richTextBox7.Text += OpenSequence[4].ToString();
+                        richTextBox7.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[4]);
+                    }
+                    else
+                    {
+                        richTextBox7.Text += "-";
+                        richTextBox7.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][5] == '1')
+                    {
+                        richTextBox8.Text += OpenSequence[5].ToString();
+                        richTextBox8.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[5]);
+                    }
+                    else
+                    {
+                        richTextBox8.Text += "-";
+                        richTextBox8.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][6] == '1')
+                    {
+                        richTextBox9.Text += OpenSequence[6].ToString();
+                        richTextBox9.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[6]);
+                    }
+                    else
+                    {
+                        richTextBox9.Text += "-";
+                        richTextBox9.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][7] == '1')
+                    {
+                        richTextBox10.Text += OpenSequence[7].ToString();
+                        richTextBox10.Text += Environment.NewLine;
+                        WeightsSums[i].Add(OpenSequence[7]);
+                    }
+                    else
+                    {
+                        richTextBox10.Text += "-";
+                        richTextBox10.Text += Environment.NewLine;
+                    }
+                }
+
+                for (int i = 0; i < Message.Length; i++)
+                {
+                    C.Add(WeightsSums[i].Sum() % M);
+                    richTextBox11.Text += (WeightsSums[i].Sum() % M).ToString();
+                    richTextBox11.Text += Environment.NewLine;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
             }
 
-            for (int i = 0; i < Message.Length; i++)
-            {
-                if (letterCodes[Message[i]][0] == '1')
-                {
-                    richTextBox3.Text += OpenSequence[0].ToString();
-                    richTextBox3.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[0]);
-                }
-                else 
-                {
-                    richTextBox3.Text += "-";
-                    richTextBox3.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][1] == '1')
-                {
-                    richTextBox4.Text += OpenSequence[1].ToString();
-                    richTextBox4.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[1]);
-                }
-                else
-                {
-                    richTextBox4.Text += "-";
-                    richTextBox4.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][2] == '1')
-                {
-                    richTextBox5.Text += OpenSequence[2].ToString();
-                    richTextBox5.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[2]);
-                }
-                else
-                {
-                    richTextBox5.Text += "-";
-                    richTextBox5.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][3] == '1')
-                {
-                    richTextBox6.Text += OpenSequence[3].ToString();
-                    richTextBox6.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[3]);
-                }
-                else
-                {
-                    richTextBox6.Text += "-";
-                    richTextBox6.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][4] == '1')
-                {
-                    richTextBox7.Text += OpenSequence[4].ToString();
-                    richTextBox7.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[4]);
-                }
-                else
-                {
-                    richTextBox7.Text += "-";
-                    richTextBox7.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][5] == '1')
-                {
-                    richTextBox8.Text += OpenSequence[5].ToString();
-                    richTextBox8.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[5]);
-                }
-                else
-                {
-                    richTextBox8.Text += "-";
-                    richTextBox8.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][6] == '1')
-                {
-                    richTextBox9.Text += OpenSequence[6].ToString();
-                    richTextBox9.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[6]);
-                }
-                else
-                {
-                    richTextBox9.Text += "-";
-                    richTextBox9.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][7] == '1')
-                {
-                    richTextBox10.Text += OpenSequence[7].ToString();
-                    richTextBox10.Text += Environment.NewLine;
-                    WeightsSums[i].Add(OpenSequence[7]);
-                }
-                else
-                {
-                    richTextBox10.Text += "-";
-                    richTextBox10.Text += Environment.NewLine;
-                }
-            }
-
-            for (int i = 0; i < Message.Length; i++)
-            {
-                C.Add(WeightsSums[i].Sum());
-                richTextBox11.Text += WeightsSums[i].Sum().ToString();
-                richTextBox11.Text += Environment.NewLine;
-            }
         }
 
         public bool IsPrime(int number)
@@ -459,7 +516,7 @@ namespace ZKI_Lab1
 
             return true;
         }
-        
+
 
         public static bool IsCoprime(int number1, int number2)
         {
@@ -482,17 +539,25 @@ namespace ZKI_Lab1
 
         private void button10_Click_1(object sender, EventArgs e)
         {
-            int tmp = int.Parse(textBox4.Text);
-            if (IsCoprime(tmp, M))
+            try
             {
-                textBox4.ForeColor = Color.Green;
-                N = tmp;
+                int tmp = int.Parse(textBox4.Text);
+                if (IsCoprime(tmp, M))
+                {
+                    textBox4.ForeColor = Color.Green;
+                    N = tmp;
 
+                }
+                else
+                {
+                    textBox4.ForeColor = Color.Red;
+                }
             }
-            else
+            catch
             {
-                textBox4.ForeColor = Color.Red;
+                MessageBox.Show("Ошибка");
             }
+
         }
         public int GenerateCoprime(int number)
         {
@@ -520,254 +585,326 @@ namespace ZKI_Lab1
 
         private void button9_Click_1(object sender, EventArgs e)
         {
-            N = GenerateCoprime(M);
-            textBox4.Text = N.ToString();
-            textBox4.ForeColor = Color.Green;
+            try
+            {
+                N = GenerateCoprime(M);
+                textBox4.Text = N.ToString();
+                textBox4.ForeColor = Color.Green;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+
         }
 
         private void button8_Click_1(object sender, EventArgs e)
         {
-            int tmp = int.Parse(ReadFile());
-            textBox4.Text = tmp.ToString();
-            if (IsCoprime(tmp, M))
+            try
             {
-                textBox4.ForeColor = Color.Green;
-                N = tmp;
+                int tmp = int.Parse(ReadFile());
+                textBox4.Text = tmp.ToString();
+                if (IsCoprime(tmp, M))
+                {
+                    textBox4.ForeColor = Color.Green;
+                    N = tmp;
 
+                }
+                else
+                {
+                    textBox4.ForeColor = Color.Red;
+                }
             }
-            else
+            catch
             {
-                textBox4.ForeColor = Color.Red;
+                MessageBox.Show("Ошибка");
             }
+
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            int tmp = 0;
-            while (true) 
+            try
             {
-                tmp++;
-                if((N * tmp) % M == 1)
+                int tmp = 0;
+                while (true)
                 {
-                    N1 = tmp;
-                    textBox5.Text = N1.ToString();
-                    textBox5.ForeColor = Color.Green;
-                    break;
+                    tmp++;
+                    if ((N * tmp) % M == 1)
+                    {
+                        N1 = tmp;
+                        textBox5.Text = N1.ToString();
+                        textBox5.ForeColor = Color.Green;
+                        break;
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            int tmp = int.Parse(textBox5.Text);
-            if ((N * tmp) % M == 1)
+            try
             {
-                N1 = tmp;
-                textBox5.ForeColor = Color.Green;
+                int tmp = int.Parse(textBox5.Text);
+                if ((N * tmp) % M == 1)
+                {
+                    N1 = tmp;
+                    textBox5.ForeColor = Color.Green;
+                }
+                else
+                {
+                    textBox5.ForeColor = Color.Red;
+                }
             }
-            else
+            catch
             {
-                textBox5.ForeColor = Color.Red;
+                MessageBox.Show("Ошибка");
             }
+
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            int tmp = int.Parse(ReadFile());
-            if ((N * tmp) % M == 1)
+            try
             {
-                N1 = tmp;
-                textBox5.ForeColor = Color.Green;
+                int tmp = int.Parse(ReadFile());
+                textBox5.Text = tmp.ToString();
+                if ((N * tmp) % M == 1)
+                {
+                    N1 = tmp;
+
+                    textBox5.ForeColor = Color.Green;
+                }
+                else
+                {
+                    textBox5.ForeColor = Color.Red;
+                }
             }
-            else
+            catch
             {
-                textBox5.ForeColor = Color.Red;
+                MessageBox.Show("Ошибка");
             }
+
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
-            string[] numberStrings = textBox6.Text.Split(' ');
-            var tmp = new List<int>();
-            bool flag = true;
-
-            foreach (string numberString in numberStrings)
+            try
             {
-                int number = int.Parse(numberString);
-                tmp.Add(number);
-            }
+                string[] numberStrings = textBox6.Text.Split(' ');
+                var tmp = new List<int>();
+                bool flag = true;
 
-            for (int i = 0; i < tmp.Count; i++)
-            {
-                if (tmp[i] != ((Sequence[i] * N) % M))
+                foreach (string numberString in numberStrings)
                 {
-                    flag = false;
-                    break;
+                    int number = int.Parse(numberString);
+                    tmp.Add(number);
+                }
+
+                for (int i = 0; i < tmp.Count; i++)
+                {
+                    if (tmp[i] != ((Sequence[i] * N) % M))
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+
+                if (flag)
+                {
+                    OpenSequence = tmp;
+                    textBox6.ForeColor = Color.Green;
+                }
+                else
+                {
+                    textBox6.ForeColor = Color.Red;
                 }
             }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
 
-            if (flag)
-            {
-                OpenSequence = tmp;
-                textBox6.ForeColor = Color.Green;
-            }
-            else
-            {
-                textBox6.ForeColor = Color.Red;
-            }
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            textBox6.Text = ReadFile();
-            string[] numberStrings = textBox6.Text.Split(' ');
-            var tmp = new List<int>();
-            bool flag = true;
-
-            foreach (string numberString in numberStrings)
+            try
             {
-                int number = int.Parse(numberString);
-                tmp.Add(number);
-            }
+                textBox6.Text = ReadFile();
+                string[] numberStrings = textBox6.Text.Split(' ');
+                var tmp = new List<int>();
+                bool flag = true;
 
-            for (int i = 0; i < tmp.Count; i++)
-            {
-                if (tmp[i] != ((Sequence[i] * N) % M))
+                foreach (string numberString in numberStrings)
                 {
-                    flag = false;
-                    break;
+                    int number = int.Parse(numberString);
+                    tmp.Add(number);
+                }
+
+                for (int i = 0; i < tmp.Count; i++)
+                {
+                    if (tmp[i] != ((Sequence[i] * N) % M))
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+
+                if (flag)
+                {
+                    OpenSequence = tmp;
+                    textBox6.ForeColor = Color.Green;
+                }
+                else
+                {
+                    textBox6.ForeColor = Color.Red;
                 }
             }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
 
-            if (flag)
-            {
-                OpenSequence = tmp;
-                textBox6.ForeColor = Color.Green;
-            }
-            else
-            {
-                textBox6.ForeColor = Color.Red;
-            }
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
-            
-            for (int i = 0; i < Message.Length; i++)
+            try
             {
-                richTextBox22.Text += Message[i];
-                richTextBox22.Text += Environment.NewLine;
-                richTextBox21.Text += letterCodes[Message[i]];
-                richTextBox21.Text += Environment.NewLine;
-                WeightsSums.Add(new List<int>());
+                for (int i = 0; i < Message.Length; i++)
+                {
+                    richTextBox22.Text += Message[i];
+                    richTextBox22.Text += Environment.NewLine;
+                    richTextBox21.Text += letterCodes[Message[i]];
+                    richTextBox21.Text += Environment.NewLine;
+                    WeightsSums.Add(new List<int>());
+                }
+                DecryptedMessage = Message;
+                for (int i = 0; i < Message.Length; i++)
+                {
+                    if (letterCodes[Message[i]][0] == '1')
+                    {
+                        richTextBox20.Text += Sequence[0].ToString();
+                        richTextBox20.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox20.Text += "-";
+                        richTextBox20.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][1] == '1')
+                    {
+                        richTextBox19.Text += Sequence[1].ToString();
+                        richTextBox19.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox19.Text += "-";
+                        richTextBox19.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][2] == '1')
+                    {
+                        richTextBox18.Text += Sequence[2].ToString();
+                        richTextBox18.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox18.Text += "-";
+                        richTextBox18.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][3] == '1')
+                    {
+                        richTextBox17.Text += Sequence[3].ToString();
+                        richTextBox17.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox17.Text += "-";
+                        richTextBox17.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][4] == '1')
+                    {
+                        richTextBox16.Text += Sequence[4].ToString();
+                        richTextBox16.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox16.Text += "-";
+                        richTextBox16.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][5] == '1')
+                    {
+                        richTextBox15.Text += Sequence[5].ToString();
+                        richTextBox15.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox15.Text += "-";
+                        richTextBox15.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][6] == '1')
+                    {
+                        richTextBox14.Text += Sequence[6].ToString();
+                        richTextBox14.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox14.Text += "-";
+                        richTextBox14.Text += Environment.NewLine;
+                    }
+
+                    if (letterCodes[Message[i]][7] == '1')
+                    {
+                        richTextBox13.Text += Sequence[7].ToString();
+                        richTextBox13.Text += Environment.NewLine;
+                    }
+                    else
+                    {
+                        richTextBox13.Text += "-";
+                        richTextBox13.Text += Environment.NewLine;
+                    }
+                }
+
+
+                for (int i = 0; i < Message.Length; i++)
+                {
+                    richTextBox12.Text += C[i].ToString();
+                    richTextBox12.Text += Environment.NewLine;
+                }
+
+                for (int i = 0; i < Message.Length; i++)
+                {
+                    A.Add((C[i] * N1) % M);
+                    richTextBox23.Text += A[i].ToString();
+                    richTextBox23.Text += Environment.NewLine;
+                }
+
+                textBox7.Text = DecryptedMessage;
             }
-            DecryptedMessage = Message;
-            for (int i = 0; i < Message.Length; i++)
+            catch
             {
-                if (letterCodes[Message[i]][0] == '1')
-                {
-                    richTextBox20.Text += Sequence[0].ToString();
-                    richTextBox20.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox20.Text += "-";
-                    richTextBox20.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][1] == '1')
-                {
-                    richTextBox19.Text += Sequence[1].ToString();
-                    richTextBox19.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox19.Text += "-";
-                    richTextBox19.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][2] == '1')
-                {
-                    richTextBox18.Text += Sequence[2].ToString();
-                    richTextBox18.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox18.Text += "-";
-                    richTextBox18.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][3] == '1')
-                {
-                    richTextBox17.Text += Sequence[3].ToString();
-                    richTextBox17.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox17.Text += "-";
-                    richTextBox17.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][4] == '1')
-                {
-                    richTextBox16.Text += Sequence[4].ToString();
-                    richTextBox16.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox16.Text += "-";
-                    richTextBox16.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][5] == '1')
-                {
-                    richTextBox15.Text += Sequence[5].ToString();
-                    richTextBox15.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox15.Text += "-";
-                    richTextBox15.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][6] == '1')
-                {
-                    richTextBox14.Text += Sequence[6].ToString();
-                    richTextBox14.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox14.Text += "-";
-                    richTextBox14.Text += Environment.NewLine;
-                }
-
-                if (letterCodes[Message[i]][7] == '1')
-                {
-                    richTextBox13.Text += Sequence[7].ToString();
-                    richTextBox13.Text += Environment.NewLine;
-                }
-                else
-                {
-                    richTextBox13.Text += "-";
-                    richTextBox13.Text += Environment.NewLine;
-                }
-            }
-            
-
-            for (int i = 0; i < Message.Length; i++)
-            {
-                richTextBox12.Text += C[i].ToString();
-                richTextBox12.Text += Environment.NewLine;
+                MessageBox.Show("Ошибка");
             }
 
-            for (int i = 0; i < Message.Length; i++)
-            {
-                A.Add((C[i] * N1) % M);
-                richTextBox23.Text += A[i].ToString();
-                richTextBox23.Text += Environment.NewLine;
-            }
 
-            textBox7.Text = DecryptedMessage;
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            string tmp = string.Join(" ", Sequence) + Environment.NewLine + string.Join(" ", OpenSequence) + Environment.NewLine + string.Join(" ", C) + Environment.NewLine + N.ToString() + Environment.NewLine + N1.ToString() + Environment.NewLine + M.ToString();
+            SaveToFile(tmp);
         }
     }
 }
