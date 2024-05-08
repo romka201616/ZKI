@@ -87,3 +87,5 @@ E:\Projects\ZKI\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.pdb
 E:\Projects\ZKI\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.genruntimeconfig.cache
 E:\Projects\ZKI\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ref\ZKI_Lab1.dll
 C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form10.resources
+C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form11.resources
+C:\Labs\ZKI\ZKI_Lab1\obj\Debug\net6.0-windows\ZKI_Lab1.Form12.resources
